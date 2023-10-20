@@ -1,0 +1,16 @@
+{
+  "name": "01_cli_interactive_sort",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/cli.js",
+  "type": "module",
+  "bin": {
+    "create-project": "bin/create-project.js"
+  },
+  "scripts": {
+    "dev": "node ./bin/create-project",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
