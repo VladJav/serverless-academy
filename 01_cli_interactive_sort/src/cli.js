@@ -1,5 +1,5 @@
-import * as readline from "node:readline/promises";
-import getOutputUserOptions from "../utils/getOutputUserOptions.js";
+import * as readline from 'node:readline/promises';
+import getOutputUserOptions from '../utils/getOutputUserOptions.js';
 
 const rl = readline.createInterface({
     input: process.stdin,
