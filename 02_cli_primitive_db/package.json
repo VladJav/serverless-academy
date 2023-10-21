@@ -1,0 +1,19 @@
+{
+  "name": "02_cli_primitive_db",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/cli.js",
+  "type": "module",
+  "bin": {
+    "create-project-primitive-db": "bin/create-project.js"
+  },
+  "scripts": {
+    "dev": "node ./bin/create-project",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^9.2.11"
+  }
+}
