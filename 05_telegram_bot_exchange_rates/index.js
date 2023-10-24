@@ -46,7 +46,5 @@ bot.on('message', async (message)=>{
                }
            });
            break;
-       default:
-           await bot.sendMessage(chatId, 'Такої команди не існує');
    }
 });
