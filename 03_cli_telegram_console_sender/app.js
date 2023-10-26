@@ -6,7 +6,7 @@ import {photoCommand} from './commands/photoCommand.js';
 // To fix deprecation warning
 process.env["NTBA_FIX_350"] = 1;
 
-const token = 'YOUR BOT TOKEN';
+const token = process.env.BOT_TOKEN;
 const bot = new TelegramBot(token);
 
 program
