@@ -2,10 +2,17 @@ import axios from "axios";
 import {searchIsDone} from "./utils/searchIsDone.js";
 
 const jsonSorting = async (endpoints) => {
+    let trueValues = 0;
+    let falseValues = 0;
+
     for(let endpoint of endpoints){
         try {
             const { data } = await axios.get(endpoint);
             const [isDone] = searchIsDone(data);
+
+            if(isDone) trueValues++;
+            else falseValues++;
+
             console.log(`[Success] ${endpoint}: isDone - ${isDone}`);
         }
         catch (e) {
@@ -14,6 +21,10 @@ const jsonSorting = async (endpoints) => {
                 try {
                     const { data } = await axios.get(endpoint);
                     const [isDone] = searchIsDone(data);
+
+                    if(isDone) trueValues++;
+                    else falseValues++;
+
                     console.log(`[Success] ${endpoint}: isDone - ${isDone}`);
                     break;
                 }
@@ -23,8 +34,11 @@ const jsonSorting = async (endpoints) => {
             }
             if(error) console.log(`[FAIL] ${endpoint}: The endpoint is unavailable`);
         }
-
     }
+
+    console.log(`Fount True values: ${trueValues}`);
+    console.log(`Fount False values: ${falseValues}`);
+
 }
 
 
