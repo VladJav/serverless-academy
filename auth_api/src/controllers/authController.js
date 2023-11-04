@@ -27,7 +27,7 @@ export const signIn = async (req, res, next) => {
             throw new UnauthenticatedError('Please provide correct credentials');
         }
 
-        const accessToken = jwt.sign({userId: user.id, email}, process.env.JWT_ACCESS_SECRET, { expiresIn: '60m'});
+        const accessToken = jwt.sign({userId: user.id, email}, process.env.JWT_ACCESS_SECRET, { expiresIn: process.env.JWT_ACCESS_TTL || '60m'});
         const refreshToken = jwt.sign({userId: user.id, email}, process.env.JWT_REFRESH_SECRET);
 
         await tokenMode.save({userId: user.id, refreshToken, userAgent});
@@ -67,7 +67,7 @@ export const signUp = async (req, res, next ) => {
 
         const { id: userId} = await userModel.create({ email, password });
 
-        const accessToken = jwt.sign({userId, email}, process.env.JWT_ACCESS_SECRET, { expiresIn: '60m'});
+        const accessToken = jwt.sign({userId, email}, process.env.JWT_ACCESS_SECRET, { expiresIn: process.env.JWT_ACCESS_TTL || '60m'});
         const refreshToken = jwt.sign({userId, email}, process.env.JWT_REFRESH_SECRET);
 
         await tokenMode.save({userId, refreshToken, userAgent});
