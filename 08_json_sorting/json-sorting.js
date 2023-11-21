@@ -42,6 +42,6 @@ const jsonSorting = async (endpoints) => {
 }
 
 
-// Here is my example endpoints
+// Here are my example endpoints
 const endpoint = ['http://localhost:8000/json-1', 'http://localhost:8000/json-2'];
 jsonSorting(endpoint);

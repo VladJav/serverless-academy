@@ -15,7 +15,7 @@ export const signIn = async (req, res, next) => {
         }
 
         const userModel = new UserModel();
-        const tokenMode = new Token();
+        const tokenModel = new Token();
 
         const user = await userModel.findByEmail(email);
         if(!user){
@@ -30,7 +30,7 @@ export const signIn = async (req, res, next) => {
         const accessToken = jwt.sign({userId: user.id, email}, process.env.JWT_ACCESS_SECRET, { expiresIn: process.env.JWT_ACCESS_TTL || '60m'});
         const refreshToken = jwt.sign({userId: user.id, email}, process.env.JWT_REFRESH_SECRET);
 
-        await tokenMode.save({userId: user.id, refreshToken, userAgent});
+        await tokenModel.save({userId: user.id, refreshToken, userAgent});
 
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
@@ -58,7 +58,7 @@ export const signUp = async (req, res, next ) => {
         }
 
         const userModel = new UserModel();
-        const tokenMode = new Token();
+        const tokenModel = new Token();
 
         const user = await userModel.findByEmail(email);
         if(user){
@@ -70,7 +70,7 @@ export const signUp = async (req, res, next ) => {
         const accessToken = jwt.sign({userId, email}, process.env.JWT_ACCESS_SECRET, { expiresIn: process.env.JWT_ACCESS_TTL || '60m'});
         const refreshToken = jwt.sign({userId, email}, process.env.JWT_REFRESH_SECRET);
 
-        await tokenMode.save({userId, refreshToken, userAgent});
+        await tokenModel.save({userId, refreshToken, userAgent});
 
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,

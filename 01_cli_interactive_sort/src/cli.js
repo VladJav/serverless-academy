@@ -6,7 +6,6 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-
 export async function cli() {
     try{
         while (true){

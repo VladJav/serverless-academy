@@ -12,7 +12,7 @@ export const getCurrentRate = async (cache) => {
                 usd: usdMono,
                 eur: eurMono
             }
-        }
+        };
     }
     else{
         try {
@@ -25,7 +25,7 @@ export const getCurrentRate = async (cache) => {
                     usd: usdMono,
                     eur: eurMono
                 }
-            }
+            };
         }
         catch (e){
             console.log(e.data);

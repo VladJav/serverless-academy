@@ -7,5 +7,5 @@ export const showMe = (req, res) => {
             id: userId,
             email
         }
-    })
+    });
 };

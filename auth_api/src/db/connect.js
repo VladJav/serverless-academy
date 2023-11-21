@@ -20,7 +20,7 @@ export const connectDB = async () =>{
             token varchar(255),
             userAgent varchar(255))
         `);
-}
+};
 
 
 
